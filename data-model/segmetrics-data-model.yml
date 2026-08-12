@@ -1,0 +1,101 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/
+note: >-
+  Entity graph transcribed from the published request/response schemas in the API reference.
+  SegMetrics publishes no OpenAPI, so this is NOT derived from $ref links — every entity and
+  field below appears verbatim in a documented request body or response example. No entity,
+  field, or cardinality has been inferred beyond what the reference shows.
+identifiers:
+  account_id:
+    description: Tenant identifier; a path segment on every REST call.
+    source: SegMetrics Account Settings page
+  integration_id:
+    description: >-
+      Identifies the data source within an account. Required on every Import API write, so the
+      same logical contact can exist under multiple integrations.
+    source: SegMetrics Account Settings page
+  contact_id:
+    description: >-
+      Customer-supplied external id. Not a SegMetrics-minted id — it is the id from the source
+      system. On upsert, contact_id takes priority over email; passing a contact_id for an
+      existing email address re-keys that contact to the new id.
+  id_prefixes: []
+  id_prefixes_note: No typed id prefixes (e.g. cus_/inv_) are used; ids are opaque strings/integers.
+entity_count: 8
+entities:
+- name: Contact
+  write_endpoint: 'POST /v1/{account_id}/{integration_id}/contact'
+  delete_endpoint: 'DELETE /v1/{account_id}/{integration_id}/contact/{contact_id_or_email}'
+  read_endpoint: 'GET /{account_id}/contact/{contact_id_or_email}'
+  keys: [contact_id, email]
+  fields:
+  - first_name
+  - last_name
+  - email
+  - status
+  - date_created
+  - last_updated
+  - utm_source
+  - utm_medium
+  - utm_campaign
+  - utm_content
+  - utm_term
+  - referring_url
+  - optin_url
+  - ip_address
+  - affiliate_id
+  - geo_lat
+  - geo_lon
+  - custom_fields
+  expansions: [tags, events, orders]
+  expansion_param: extend
+- name: Tag
+  write_endpoints:
+  - 'POST /v1/{account_id}/{integration_id}/tags/add'
+  - 'POST /v1/{account_id}/{integration_id}/tags/remove'
+  fields: [id, tag_id, name, date, date_created, contact_id]
+  note: Tags may be supplied inline on a Contact write as ids or as objects with a date.
+- name: Order
+  aka: Invoice
+  write_endpoint: 'POST /v1/{account_id}/{integration_id}/invoice'
+  delete_endpoint: 'DELETE /v1/{account_id}/{integration_id}/invoice/{id}'
+  fields: [order_id]
+- name: Subscription
+  write_endpoint: 'POST /v1/{account_id}/{integration_id}/subscription'
+  delete_endpoint: 'DELETE /v1/{account_id}/{integration_id}/subscription/{id}'
+- name: Product
+  write_endpoint: 'POST /v1/{account_id}/{integration_id}/product'
+- name: AdPerformance
+  write_endpoint: 'POST /v1/{account_id}/{integration_id}/ad/performance'
+- name: Report
+  read_endpoints:
+  - 'GET /{account_id}/report/{report_type}/{report_id}'
+  - 'GET /{account_id}/report/{report_type}/{report_id}/contacts'
+  - 'POST /v2/{account_id}/data/query'
+  report_types_documented: [leads, revenue, ads, subscriptions]
+  report_types_note: >-
+    The REST reference names four report_type values; the MCP server's run-query tool is
+    documented as supporting 16 report types. The REST surface and the agent surface therefore
+    diverge in breadth.
+  response_shape: 'report{} + kpis[] + graph{labels,datasets} + table{fields[],rows[]}'
+- name: CustomField
+  note: >-
+    Free-form key/value on Contact. Also surfaces as a report dimension — the MCP get-dimensions
+    tool is documented as returning "account-specific custom dimensions pulled from your
+    integration custom fields".
+relationships:
+- {from: Account, to: Integration, type: has_many, via: integration_id}
+- {from: Integration, to: Contact, type: has_many, via: 'path segment on every write'}
+- {from: Contact, to: Tag, type: has_many, via: tags}
+- {from: Contact, to: Order, type: has_many, via: orders}
+- {from: Contact, to: Event, type: has_many, via: 'events (extend expansion)'}
+- {from: Contact, to: Subscription, type: has_many, via: subscription writes}
+- {from: Contact, to: CustomField, type: has_many, via: custom_fields}
+- {from: Order, to: Product, type: has_many, via: product records}
+- {from: Report, to: Contact, type: has_many, via: '/report/{type}/{id}/contacts export'}
+render: null
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://developers.segmetrics.io/', status: 200}

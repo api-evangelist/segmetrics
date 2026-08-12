@@ -1,0 +1,111 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/
+docs: https://developers.segmetrics.io/
+note: >-
+  Cross-cutting request/response semantics transcribed from the published API reference.
+  SegMetrics publishes no OpenAPI, so nothing here is derived from a spec.
+surfaces:
+- name: Import API
+  base: https://import.segmetrics.io/api/v1/{account_id}/{integration_id}/
+  purpose: Write contacts, tags, orders, subscriptions, products and ad performance into an integration.
+  version: v1
+  version_note: 'Documented verbatim as "API v1 is in active development."'
+- name: Reporting API
+  base: https://api.segmetrics.io/
+  purpose: Read saved-report data, customer journeys, and ad-hoc query results.
+  version: mixed
+  version_note: >-
+    Saved-report and contact endpoints are unversioned in the path
+    (/{account_id}/report/...); the ad-hoc query endpoint alone sits under /v2/
+    (/v2/{account_id}/data/query). The reference calls this out explicitly.
+- name: Contact API
+  base: https://api.segmetrics.io/{account_id}/contact/{contact_id_or_email}
+  purpose: Read a single contact with optional expansions.
+- name: JS API
+  base: browser snippet
+  purpose: Identify visitors and bind a contact to the current web session.
+- name: MCP Server
+  base: https://app.segmetrics.io/mcp/{ACCOUNT_ID}
+  purpose: Read-only agent access. See mcp/segmetrics-mcp.yml.
+authentication:
+  style: api-key-in-authorization-header
+  header: 'Authorization: YOUR_API_KEY'
+  prefix: none
+  tenancy: account_id is a path segment on every REST call; the Import API adds integration_id.
+  artifact: authentication/segmetrics-authentication.yml
+idempotency:
+  supported: false
+  idempotency_key_header: null
+  note: >-
+    No Idempotency-Key header or request-id de-duplication is documented on any endpoint. The
+    write endpoints are UPSERTS keyed on a natural identifier — POST /contact updates the
+    existing record when contact_id already exists, and the reference states priority is given
+    to contact_id over email — so a repeated identical POST converges rather than duplicating.
+    That is natural-key convergence, NOT an idempotency contract: there is no replay window,
+    no stored response, and no way to make a DELETE or an /ad/performance write safely
+    retryable. Recorded as unsupported; no Idempotency pointer is emitted in apis.yml.
+pagination:
+  supported: false
+  note: >-
+    No pagination parameters (page/limit/offset/cursor) and no next-link/total fields are
+    documented on any read endpoint. Report scope is bounded by date range and scale
+    (start / end / scale=day|week|month) rather than by page. The /contacts export endpoint
+    returns the matching customer journeys for the report window with no documented cap.
+field_expansion:
+  supported: true
+  style: csv-parameter
+  parameter: extend
+  applies_to:
+  - 'GET /{account_id}/contact/{contact_id_or_email}'
+  - 'GET /{account_id}/report/{report_type}/{report_id}/contacts'
+  note: >-
+    "By default only the core contact data is returned" — pass extend as a CSV of expansions
+    (e.g. extend=tags,events) to include related collections.
+metadata:
+  supported: true
+  style: custom_fields
+  note: >-
+    Contacts carry a free-form `custom_fields` object (e.g. {"shirt_size": "Medium"}). Setting
+    a key to null removes the field. Custom fields also surface as report dimensions.
+date_handling:
+  request_formats: ['YYYY-MM-DD', 'YYYY-MM-DD HH:MM:SS', 'PHP relative formats (e.g. "-30 day", "now")']
+  relative_dates_doc: https://www.php.net/manual/en/datetime.formats.relative.php
+  response_format: ISO 8601 with offset (e.g. 2021-12-18T19:07:50+00:00) on contact reads
+  scale_values: [day, week, month]
+request_tracing:
+  request_id_header: null
+  note: No request-id / correlation-id header is documented on requests or responses.
+versioning:
+  scheme: uri-path
+  current: [v1 (Import), v2 (ad-hoc query), unversioned (saved reports, contact read)]
+  artifact: lifecycle/segmetrics-lifecycle.yml
+error_envelope:
+  format: proprietary-json
+  shape: '{"status": "error", "errors": ["..."]}'
+  artifact: errors/segmetrics-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  status_on_exhaustion: null
+  note: >-
+    No rate-limit headers, quota, or 429 behaviour is documented. See
+    rate-limits/segmetrics-rate-limits.yml.
+response_shapes:
+  write: '{"status":"success"}'
+  saved_report: 'report{} + kpis[] + graph{labels,datasets} + table{fields[],rows[]}'
+  adhoc_query: 'type + fields[] (name,key,type,aggregation) + rows[] (positional arrays)'
+  contact_read: 'data{} with contact core fields plus expanded tags[]/orders[]/events[]'
+  note: >-
+    Reporting responses are column-metadata + rows rather than named objects — fields[] carries
+    name/key/type/aggregation and the ad-hoc rows are POSITIONAL arrays aligned to fields[].
+    A consumer must zip rows against fields to read them.
+cross_links:
+  errors: errors/segmetrics-problem-types.yml
+  authentication: authentication/segmetrics-authentication.yml
+  lifecycle: lifecycle/segmetrics-lifecycle.yml
+  rate_limits: rate-limits/segmetrics-rate-limits.yml
+  mcp: mcp/segmetrics-mcp.yml
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://developers.segmetrics.io/', status: 200}

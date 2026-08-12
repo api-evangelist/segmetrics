@@ -1,0 +1,91 @@
+generated: '2026-08-12'
+method: searched
+source: https://segmetrics.io/pricing/
+docs: https://segmetrics.io/pricing/
+currency: USD
+billing_periods: [monthly, annual]
+annual_discount: '2 months free when billed annually'
+free_trial: {days: 14, credit_card_required: unknown}
+pricing_model: contact-volume-slider
+pricing_model_note: >-
+  Displayed prices are a function of "active contacts" — the pricing page carries a slider
+  ("How many active contacts do you have? Only pay for the people you're actively engaging
+  with") which defaults to 30k. The prices recorded below are the published rates AT THE 30,000
+  ACTIVE CONTACTS TIER; they rise with the slider. No public rate card enumerating the price at
+  each contact band was found, and no overage rate is published — you move to a higher band
+  rather than paying an overage.
+api_access_gating: >-
+  IMPORTANT — programmatic API access is NOT included in every plan. The Scale tier's headline
+  benefit is "Advanced Data APIs — Get programmatic access to the reporting and data ingest
+  APIs". The plan comparison table lists "Import API Access" and "Reporting API" as separate
+  feature rows. A developer therefore cannot reach the Import or Reporting API on the entry
+  tier; the MCP Server additionally requires a paid plan on the AI tool itself.
+plan_count: 4
+plans:
+- name: Launch
+  price: 57
+  currency: USD
+  period: month
+  price_basis: 30000 active contacts
+  quota: {active_contacts: 30000}
+  overage: null
+  limits:
+    custom_dashboards: 1
+    users: unlimited
+    integrations: '100+'
+  includes:
+  - Full Funnel Analytics
+  - Essentials Reporting
+  - 100+ Integrations
+  - Unlimited Users
+  - Full LTV Tracking
+  - Training & Support
+  api_access: false
+- name: Grow
+  price: 197
+  currency: USD
+  period: month
+  price_basis: 30000 active contacts
+  quota: {active_contacts: 30000}
+  overage: null
+  includes:
+  - Everything in Launch
+  - Advanced Reporting
+  - Customer Journey Tracking
+  - Ad Conversion Feeder
+  - Advanced Segmentation
+  - 1-on-1 Onboarding
+  api_access: false
+- name: Scale
+  price: 397
+  currency: USD
+  period: month
+  price_basis: 30000 active contacts
+  quota: {active_contacts: 30000}
+  overage: null
+  limits:
+    custom_dashboards: unlimited
+  includes:
+  - Everything in Grow
+  - 'Advanced Data APIs (programmatic access to the reporting and data ingest APIs)'
+  - Unlimited Custom Dashboards
+  - Server-Side Tracking
+  - Multi-Currency Conversion
+  - Dedicated Account Manager
+  api_access: true
+- name: Enterprise
+  price: null
+  currency: USD
+  period: null
+  pricing: contact-sales
+  signup_url: https://segmetrics.io/book-a-demo/
+  targeting: 'companies over $10M/year in revenue'
+  includes:
+  - Complete analytics, reporting and support
+  api_access: true
+addons:
+- {name: Server-Side Tracking, note: 'listed as an Add-on on Launch and Grow; included on Scale'}
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://segmetrics.io/pricing/', status: 200}

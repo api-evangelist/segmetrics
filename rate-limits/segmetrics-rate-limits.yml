@@ -1,0 +1,28 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/#responses
+docs: https://developers.segmetrics.io/
+limit_count: 0
+limits: []
+headers: []
+status_on_exhaustion: null
+note: >-
+  SegMetrics publishes NO rate limits. The full public API reference at
+  developers.segmetrics.io was read end to end and contains no occurrence of "rate limit",
+  "throttle", "quota", "429", or "Retry-After", and no rate-limit response headers are
+  documented on any endpoint. The only overload guidance published is under Responses: a 500
+  is returned "if the server is overloaded", with the instruction to "try again after a short
+  period" — no backoff interval, no header, no status code distinct from a generic server
+  error. This is an honest zero: limits may well be enforced at the edge (all hosts sit behind
+  Cloudflare), but a consumer cannot discover them from anything SegMetrics publishes, and an
+  agent has no runtime signal to back off on.
+plan_related_limits:
+  note: >-
+    The commercial quota that does exist is contact volume, not request volume — the Launch
+    tier is documented at 30,000 active contacts. That is captured in
+    plans/segmetrics-plans-pricing.yml, not here.
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://developers.segmetrics.io/', status: 200, note: 'full reference, no rate-limit section'}
+  - {url: 'https://docs.segmetrics.io/', status: 200}

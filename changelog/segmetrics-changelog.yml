@@ -1,0 +1,74 @@
+generated: '2026-08-12'
+method: searched
+source: https://changelog.segmetrics.io/
+url: https://changelog.segmetrics.io/
+platform: Headway (cloud.headwayapp.co)
+scheme: product-release-notes
+scheme_note: >-
+  A product changelog, not an API changelog. Entries are named features rather than API
+  versions, and the widget as served does not expose per-entry publication dates in the page
+  body — so no `date:` field is recorded below rather than a guessed one. There is no
+  API-specific changelog: breaking changes to the Import or Reporting API are not tracked here.
+current_version: null
+current_version_note: >-
+  No version numbers are published. The API's own version identity is the URI path (v1 / v2) —
+  see lifecycle/segmetrics-lifecycle.yml.
+rss: null
+entry_count: 10
+entries:
+- title: User Agent Tracking
+  date: null
+  type: addition
+  breaking: false
+  highlight: See real bot-to-human traffic ratio and break traffic down by device, OS, and browser.
+- title: Metric Snapshots
+  date: null
+  type: addition
+  breaking: false
+  highlight: Send dashboards to email or Slack automatically as PDF/PNG.
+- title: Updated Conversion Feeder
+  date: null
+  type: addition
+  breaking: false
+  highlight: Filters segmented conversion data pushed to ad platforms daily.
+- title: SegMetrics MCP Server
+  date: null
+  type: addition
+  breaking: false
+  highlight: >-
+    Connect SegMetrics data directly to Claude/ChatGPT for AI-driven analytics queries. This is
+    the release behind mcp/segmetrics-mcp.yml.
+- title: Shareable Agency Dashboard Templates
+  date: null
+  type: addition
+  breaking: false
+  highlight: Save and deploy dashboards as reusable templates.
+- title: Custom Home Dashboard
+  date: null
+  type: addition
+  breaking: false
+  highlight: Support for custom layouts and embedded dashboards.
+- title: AI Search in Channel Reports
+  date: null
+  type: addition
+  breaking: false
+  highlight: Natural-language search for traffic sources and campaigns.
+- title: Metric Alerts for All Accounts
+  date: null
+  type: addition
+  breaking: false
+  highlight: Threshold-based notifications on any metric.
+- title: Pike13 Integration
+  date: null
+  type: addition
+  breaking: false
+  highlight: New data connection for contact and subscription tracking.
+- title: Multi-Report Tables & Attribution
+  date: null
+  type: addition
+  breaking: false
+  highlight: Dashboard widgets with attribution-model selection.
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://changelog.segmetrics.io/', status: 200}

@@ -1,0 +1,49 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/
+versioning:
+  scheme: uri-path
+  current: v1
+  note: >-
+    The Import API is v1 and is documented verbatim as "in active development". The Reporting
+    API is inconsistent: saved-report and contact reads are UNVERSIONED in the path
+    (/{account_id}/report/...), while the ad-hoc query endpoint alone is under /v2/
+    (/v2/{account_id}/data/query) — the reference flags this as an exception. No version
+    negotiation header or date-based version train is published.
+  docs: https://developers.segmetrics.io/#overview
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No deprecation policy, no notice window, and no RFC 8594 Sunset/Deprecation header support
+    is published anywhere on developers.segmetrics.io, docs.segmetrics.io, or the changelog.
+    No Deprecation pointer is emitted in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment was found. Enterprise terms are sales-gated.
+status_page:
+  url: https://status.segmetrics.io/
+  platform: Atlassian Statuspage
+  status: 200
+  note: Public component status and incident history; no authentication required.
+changelog:
+  url: https://changelog.segmetrics.io/
+  platform: Headway
+  artifact: changelog/segmetrics-changelog.yml
+support:
+  help_center: https://docs.segmetrics.io/
+  contact: https://docs.segmetrics.io/contact/
+deprecated_operations: []
+deprecated_operations_note: >-
+  Cannot be derived — SegMetrics publishes no OpenAPI, so there is no machine-readable
+  `deprecated: true` to read.
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://status.segmetrics.io/', status: 200}
+  - {url: 'https://changelog.segmetrics.io/', status: 200}
+  - {url: 'https://developers.segmetrics.io/', status: 200}
+  - {url: 'https://segmetrics.io/roadmap/', status: 404, note: 'no public roadmap — no Roadmap pointer emitted'}

@@ -1,0 +1,115 @@
+generated: '2026-08-12'
+method: searched
+status: published
+source: https://docs.segmetrics.io/article/672-mcp-server
+docs:
+- https://docs.segmetrics.io/article/672-mcp-server
+- https://segmetrics.io/feature/mcp-server/
+server:
+  name: SegMetrics MCP Server
+  transport: http
+  url: https://app.segmetrics.io/mcp/{ACCOUNT_ID}
+  url_note: >-
+    The endpoint is per-tenant. ACCOUNT_ID is the Account ID from the customer's SegMetrics
+    Account Settings page. There is no shared/anonymous endpoint, so tools/list cannot be
+    introspected without a real account plus a completed OAuth authorization.
+  authentication: oauth2
+  authentication_note: >-
+    The MCP client is prompted to authenticate with the SegMetrics account via OAuth on
+    connect. No published OAuth metadata document was found on app.segmetrics.io — see
+    well-known/segmetrics-well-known.yml.
+  access: read-only
+  access_note: >-
+    Documented verbatim by SegMetrics — "The SegMetrics MCP server is Read-Only. That means
+    while it can see the information in your SegMetrics account, it can not make any changes
+    to your account, or the underlying data."
+  clients_documented: [Claude, ChatGPT, Cursor, Windsurf, VS Code Copilot]
+  agency_note: >-
+    Agencies must connect each sub-account to the MCP Server separately.
+requirements:
+- An active SegMetrics account
+- A paid plan on the AI tool (e.g. Claude Pro, ChatGPT Plus) that supports MCP connections
+introspection:
+  attempted: true
+  method: 'POST {"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+  result: gated
+  note: >-
+    tools/list is not reachable anonymously — the endpoint is namespaced by ACCOUNT_ID and
+    protected by OAuth. Tool names and descriptions below are transcribed from the provider's
+    own documentation; input schemas require authenticated introspection and are NOT recorded
+    here rather than guessed.
+tool_count: 11
+tools:
+- name: get-account-info
+  category: discovery
+  description: >-
+    Returns account context: account name, timezone, currency, attribution model, feature
+    flags, subscription plan, connected integrations, and a data summary. Typically called
+    first to understand the account before making queries.
+  input_schema: unknown-auth-gated
+- name: run-query
+  category: query
+  description: >-
+    Executes a report query against SegMetrics data. The primary tool for pulling metrics and
+    analyzing performance. Supports 16 report types (including acquisition, ads, revenue,
+    funnel, leads, subscriptions), with filtering, grouping by dimensions, date ranges, time
+    comparisons, and multiple attribution models.
+  input_schema: unknown-auth-gated
+  rest_analogue: 'POST https://api.segmetrics.io/v2/{account_id}/data/query'
+- name: get-contacts
+  category: query
+  description: >-
+    Retrieves individual contact or order records matching filter criteria — drill down from
+    aggregate numbers to specific people. Supports contact, order, and individual purchase
+    views.
+  input_schema: unknown-auth-gated
+  rest_analogue: 'GET https://api.segmetrics.io/{account_id}/contact/{contact_id_or_email}'
+- name: get-metrics
+  category: discovery
+  description: Searches the 370+ available metrics in SegMetrics.
+  input_schema: unknown-auth-gated
+- name: get-dimensions
+  category: discovery
+  description: >-
+    Searches available dimensions (group-by fields) for reports, including account-specific
+    custom dimensions pulled from integration custom fields.
+  input_schema: unknown-auth-gated
+- name: get-filters
+  category: discovery
+  description: >-
+    Searches available filters and pruners. Filters narrow which contacts are included in a
+    report (before aggregation); pruners narrow which rows appear (after aggregation).
+  input_schema: unknown-auth-gated
+- name: get-products
+  category: discovery
+  description: >-
+    Returns products with revenue and volume stats. Supports keyword search and date range
+    filtering.
+  input_schema: unknown-auth-gated
+- name: get-tags
+  category: discovery
+  description: >-
+    Returns tags with contact counts. Supports keyword search and date range filtering.
+  input_schema: unknown-auth-gated
+- name: get-lists
+  category: discovery
+  description: >-
+    Returns lists with contact counts. Supports keyword search and date range filtering.
+  input_schema: unknown-auth-gated
+- name: get-segments
+  category: discovery
+  description: Returns saved audience segments with their filter definitions.
+  input_schema: unknown-auth-gated
+- name: get-traffic-sources
+  category: discovery
+  description: >-
+    Returns active traffic sources: channels, UTM sources, mediums, and campaigns with recent
+    data.
+  input_schema: unknown-auth-gated
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://docs.segmetrics.io/article/672-mcp-server', status: 200}
+  - {url: 'https://segmetrics.io/feature/mcp-server/', status: 200}
+  - {url: 'https://app.segmetrics.io/mcp', status: 404, note: 'bare path without ACCOUNT_ID returns {"message":"Resource not found"}'}
+  - {url: 'https://mcp.segmetrics.io/', status: 403, note: 'Cloudflare Error 1000 dns_loop — subdomain exists but is misconfigured; it is NOT the documented endpoint'}

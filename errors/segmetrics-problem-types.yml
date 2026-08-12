@@ -1,0 +1,56 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/#responses
+docs: https://developers.segmetrics.io/#responses
+format: proprietary-json
+format_note: >-
+  SegMetrics does NOT use RFC 9457 problem+json. The published error envelope is a plain JSON
+  object with a `status` string and an `errors` array of human-readable strings — no machine
+  readable code, no type URI, no per-field pointer. An agent cannot branch on error identity,
+  only on HTTP status plus string matching.
+envelope:
+  success:
+    shape: '{"status": "success"}'
+    content_type: application/json
+  error:
+    shape: '{"status": "error", "errors": ["missing ''id'' field "]}'
+    content_type: application/json
+    fields:
+    - {name: status, type: string, values: [success, error]}
+    - {name: errors, type: array<string>, note: 'free-text messages; no stable error code is published'}
+problem_count: 3
+problems:
+- status: 400
+  title: Bad data
+  detail: >-
+    Returned when you create or update a field and any field contains bad data, or a required
+    field is missing.
+  envelope_example: '{"status": "error", "errors": ["missing ''id'' field "]}'
+  remediation: Correct or supply the named field and retry.
+  source: https://developers.segmetrics.io/#responses
+- status: 4xx
+  title: Client error (unspecified)
+  detail: >-
+    SegMetrics documents the general contract as "an HTTP response in the 400 or 500 range and
+    a response body indicating what caused the error" without enumerating individual 401/403/404
+    /409/422/429 semantics.
+  remediation: Read the `errors` array; no code taxonomy is published.
+  source: https://developers.segmetrics.io/#responses
+- status: 500
+  title: Internal server error
+  detail: >-
+    Returned if the server is overloaded or a bug is encountered.
+  remediation: >-
+    Documented verbatim — "Try again after a short period, and if you continue to encounter an
+    error, please raise the issue with support." No Retry-After header and no backoff guidance
+    is published.
+  source: https://developers.segmetrics.io/#responses
+gaps:
+- No enumerated error-code registry.
+- No RFC 9457 application/problem+json.
+- No documented 401/403 auth-failure shape.
+- No documented 429 / rate-limit-exceeded response (see rate-limits/segmetrics-rate-limits.yml).
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://developers.segmetrics.io/', status: 200}

@@ -1,0 +1,61 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/#js_getting_started
+note: >-
+  SegMetrics ships no embeddable UI element library (no web components, no hosted checkout-style
+  widgets). What it does ship on the client side is a tracking snippet with a small JS API, a
+  browser extension, and embeddable/shareable dashboards. Recorded here because these are the
+  provider's real client-side surfaces; none of them is a server-side SDK.
+component_count: 4
+families:
+- family: tracking
+  components:
+  - name: SegMetrics JavaScript snippet
+    kind: script-tag
+    loader: account-scoped snippet copied from https://app.segmetrics.io/a/settings/snippet
+    docs: https://developers.segmetrics.io/#installing-your-javascript-snippet
+    purpose: >-
+      Records visitor page views and marketing touchpoints on the customer's own pages. Must be
+      installed before the JS API can be used.
+    versioned: false
+    versioned_note: The loader URL carries no version — see packages/segmetrics-packages.yml.
+  - name: JS API — identify
+    kind: javascript-api
+    docs: https://developers.segmetrics.io/#identifying-visitors
+    purpose: >-
+      Binds a known contact to the current web session. Documented as needed "only if the
+      marketing pages you are using are preventing SegMetrics from" identifying the visitor
+      automatically. Accepts an email (`e`) and/or an opaque external contact id (`cid`) —
+      either may be supplied, and both may be supplied together.
+    parameters:
+    - {name: e, description: 'contact email address'}
+    - {name: cid, description: 'opaque contact id from an external system'}
+- family: server-side-tracking
+  components:
+  - name: Self-hosted tracking pixel
+    kind: first-party-domain-proxy
+    purpose: >-
+      Host the tracking pixel on the customer's own domain to avoid ad-blockers. Included on the
+      Scale tier; listed as a paid add-on on Launch and Grow.
+    docs: https://segmetrics.io/feature/server-side-tracking/
+- family: browser-extension
+  components:
+  - name: SegMetrics Chrome Extension
+    kind: browser-extension
+    purpose: >-
+      Injects SegMetrics ROAS, lead value and lifetime attribution into the Facebook Ads and
+      Google Ads manager UIs.
+    docs: https://segmetrics.io/feature/chrome-extension/
+- family: embedded-dashboards
+  components:
+  - name: Shared / embedded dashboards
+    kind: hosted-embed
+    purpose: >-
+      Secure public share links for dashboards, plus embedded dashboards on the custom home
+      dashboard. Read-only presentation surface for clients and teams.
+    docs: https://segmetrics.io/feature/collaborative-dashboards/
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://developers.segmetrics.io/', status: 200}
+  - {url: 'https://segmetrics.io/feature/mcp-server/', status: 200}

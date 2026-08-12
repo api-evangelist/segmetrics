@@ -1,19 +1,98 @@
 aid: segmetrics
 name: SegMetrics
-description: SegMetrics is a company surfaced via the API Evangelist marketing integration graph — named
-  as an integration by 2 members of the programmable-marketing cohort — and added to the network as a
-  stub for full-pipeline profiling.
+description: >-
+  SegMetrics is a marketing attribution and revenue analytics platform for digital marketers,
+  info-product businesses and agencies. It stitches ad clicks, opt-ins, email engagement, calls
+  and purchases into a single contact journey so a business can see which traffic sources,
+  campaigns and funnels actually produce revenue and lifetime value rather than just clicks. The
+  platform connects to 100+ marketing tools (ActiveCampaign, Kit/ConvertKit, ClickFunnels,
+  HighLevel, Drip, Ontraport, WooCommerce, Google Ads, Microsoft Advertising and more) and adds
+  fingerprint tracking, full-LTV attribution, multi-report tables, custom dashboards and data
+  monitors on top. Developers get three public surfaces: a v1 Import API at import.segmetrics.io
+  for pushing contacts, tags, orders, subscriptions, products and ad performance into an
+  integration; a Reporting API at api.segmetrics.io for saved reports, customer-journey exports
+  and ad-hoc /v2 data queries; and a read-only hosted MCP server at app.segmetrics.io/mcp that
+  exposes 11 OAuth-protected tools to Claude, ChatGPT and other MCP clients. API access is gated
+  to the Scale tier and above.
+image: https://segmetrics.io/wp-content/uploads/2016/02/cropped-icon-lg-300x300.png
 url: https://raw.githubusercontent.com/api-evangelist/segmetrics/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:marketing-integration-graph
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
 - Company
-apis: []
+- Marketing
+- Analytics
+- Attribution
+- Marketing Analytics
+- Reporting
+- Business Intelligence
+- Advertising
+- SaaS
+- MCP
+apis:
+- aid: segmetrics-import-api
+  name: SegMetrics Import API
+  description: >-
+    The v1 Import API lets a customer push their own data into a SegMetrics integration —
+    contacts (with UTM attribution, geo, affiliate and custom fields), tags, orders/invoices,
+    subscriptions, products and ad performance. Writes are upserts keyed on contact_id or email.
+    Authenticated with a raw API key in the Authorization header; account_id and integration_id
+    are path segments.
+  humanURL: https://developers.segmetrics.io/#getting-started
+  baseURL: https://import.segmetrics.io/api/v1
+  tags:
+  - Import
+  - Contacts
+  - Attribution
+  - Marketing
+  properties:
+  - type: APIReference
+    url: https://developers.segmetrics.io/#getting-started
+  - type: Authentication
+    url: authentication/segmetrics-authentication.yml
+- aid: segmetrics-reporting-api
+  name: SegMetrics Reporting API
+  description: >-
+    The Reporting API returns the metrics SegMetrics generates — saved report data (KPIs, graph
+    series and a table of fields and rows), a customer-journey export of the contacts behind a
+    report, an ad-hoc /v2 data query endpoint that mirrors the in-app Data Explorer, and a
+    single-contact read with extend expansions for tags, events and orders.
+  humanURL: https://developers.segmetrics.io/#reporting-section
+  baseURL: https://api.segmetrics.io
+  tags:
+  - Reporting
+  - Analytics
+  - Attribution
+  - Query
+  properties:
+  - type: APIReference
+    url: https://developers.segmetrics.io/#reporting-section
+  - type: Authentication
+    url: authentication/segmetrics-authentication.yml
+- aid: segmetrics-mcp-server
+  name: SegMetrics MCP Server
+  description: >-
+    A hosted, read-only Model Context Protocol server that gives Claude, ChatGPT and other MCP
+    clients direct access to a SegMetrics account. Eleven tools split into discovery
+    (get-account-info, get-metrics, get-dimensions, get-filters, get-products, get-tags,
+    get-lists, get-segments, get-traffic-sources) and query (run-query, get-contacts). The
+    endpoint is per-tenant — https://app.segmetrics.io/mcp/ACCOUNT_ID — and authorized by OAuth
+    against the customer's SegMetrics account.
+  humanURL: https://docs.segmetrics.io/article/672-mcp-server
+  baseURL: https://app.segmetrics.io/mcp
+  tags:
+  - MCP
+  - Agents
+  - Analytics
+  - Reporting
+  properties:
+  - type: MCPServer
+    url: mcp/segmetrics-mcp.yml
+  - type: Documentation
+    url: https://docs.segmetrics.io/article/672-mcp-server
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -21,8 +100,73 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://segmetrics.com/
+  url: https://segmetrics.io/
+- type: DeveloperPortal
+  url: https://developers.segmetrics.io/
+- type: Documentation
+  url: https://docs.segmetrics.io/
+- type: APIReference
+  url: https://developers.segmetrics.io/
+- type: GettingStarted
+  url: https://developers.segmetrics.io/#getting-started
+- type: Support
+  url: https://docs.segmetrics.io/contact/
+- type: Blog
+  url: https://segmetrics.io/articles/
+- type: GitHubOrganization
+  url: https://github.com/SegMetrics
+- type: Pricing
+  url: https://segmetrics.io/pricing/
+- type: SignUp
+  url: https://app.segmetrics.io/signup/
+- type: Login
+  url: https://app.segmetrics.io/login/
+- type: TermsOfService
+  url: https://segmetrics.io/terms-service/
+- type: PrivacyPolicy
+  url: https://segmetrics.io/privacy-policy/
+- type: StatusPage
+  url: https://status.segmetrics.io/
+- type: ChangeLog
+  url: changelog/segmetrics-changelog.yml
+- type: MCPServer
+  url: mcp/segmetrics-mcp.yml
+- type: LLMsTxt
+  url: llms/segmetrics-llms.txt
+- type: Authentication
+  url: authentication/segmetrics-authentication.yml
+- type: Conventions
+  url: conventions/segmetrics-conventions.yml
+- type: ErrorCatalog
+  url: errors/segmetrics-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/segmetrics-lifecycle.yml
+- type: Plans
+  url: plans/segmetrics-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/segmetrics-rate-limits.yml
+- type: Packages
+  url: packages/segmetrics-packages.yml
+- type: Components
+  url: components/segmetrics-components.yml
+- type: DataModel
+  url: data-model/segmetrics-data-model.yml
+- type: Conformance
+  url: conformance/segmetrics-conformance.yml
+- type: Compliance
+  url: https://segmetrics.io/security/
+- type: Security
+  url: https://segmetrics.io/security/
+- type: VulnerabilityDisclosure
+  url: security/segmetrics-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/segmetrics-domain-security.yml
 x-vouched-by:
 - Drip
 - Ontraport
 x-vouch-count: 2
+x-enrichment:
+  date: '2026-08-12'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

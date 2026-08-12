@@ -1,0 +1,62 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.segmetrics.io/#authentication
+docs: https://developers.segmetrics.io/#authentication
+note: >-
+  SegMetrics publishes no OpenAPI, so this profile is transcribed from the published API
+  reference rather than derived from securitySchemes. Two distinct auth models are in use: a
+  static API key on the REST surfaces, and OAuth on the MCP server.
+summary:
+  types: [apiKey, oauth2]
+  api_key_in: [header]
+  api_key_names: [Authorization]
+  oauth2_flows: [unspecified]
+  tenancy: >-
+    Account ID is a PATH segment on every REST call, so the API key alone does not select the
+    tenant — the caller must know both the Account ID and, on the Import API, the Integration ID.
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter_name: Authorization
+  format: raw-key
+  format_note: >-
+    The key is sent as the bare value of the Authorization header — no "Bearer" or "Token"
+    prefix is documented. Example published by SegMetrics: `-H 'Authorization: YOUR_API_KEY'`.
+  applies_to:
+  - Import API (https://import.segmetrics.io/api/v1/{account_id}/{integration_id}/)
+  - Reporting API (https://api.segmetrics.io/)
+  - Contact API (https://api.segmetrics.io/{account_id}/contact/{id_or_email})
+  key_issuance: >-
+    Account ID and API Key are both found on the SegMetrics Account page
+    (https://app.segmetrics.io/a/account/edit). No self-service key rotation, scoping, or
+    expiry is documented.
+  sources: ['https://developers.segmetrics.io/#authentication']
+- name: OAuth
+  type: oauth2
+  applies_to:
+  - MCP Server (https://app.segmetrics.io/mcp/{ACCOUNT_ID})
+  flows: []
+  flows_note: >-
+    SegMetrics documents that connecting the MCP server prompts an OAuth authorization against
+    the SegMetrics account, but publishes no authorization/token endpoints, no scope reference,
+    and no /.well-known/oauth-authorization-server or /.well-known/oauth-protected-resource
+    metadata. The flow is therefore recorded as present-but-undocumented rather than guessed.
+  sources: ['https://docs.segmetrics.io/article/672-mcp-server']
+- name: JavaScriptSnippet
+  type: other
+  applies_to:
+  - JS API (browser tracking snippet)
+  note: >-
+    The client-side JS API is authorized by the account-scoped tracking snippet installed on
+    the customer's own pages, not by an API key. It identifies visitors; it does not read data.
+  sources: ['https://developers.segmetrics.io/#js_getting_started']
+gaps:
+- No documented key rotation, expiry, or scoping on the REST API key.
+- No OAuth scope reference published for the MCP surface.
+- No RFC 8414 / RFC 9728 discovery metadata on any host (see well-known/segmetrics-well-known.yml).
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://developers.segmetrics.io/', status: 200}
+  - {url: 'https://docs.segmetrics.io/article/672-mcp-server', status: 200}

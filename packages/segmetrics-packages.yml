@@ -1,0 +1,68 @@
+generated: '2026-08-12'
+method: searched
+source: registry searches on npm, PyPI, RubyGems, Packagist, crates.io + the SegMetrics GitHub org
+official_package_count: 0
+note: >-
+  SegMetrics ships NO first-party client library in any public package registry. Every registry
+  below was queried unauthenticated on 2026-08-12 and the result is recorded verbatim. The
+  SegMetrics GitHub org (github.com/SegMetrics) was also enumerated: it holds 16 public
+  repositories, and every one of them is either a fork of a third-party library
+  (drip-php, google-ads-php, php-vcr, laravel-collective-html, singlestoredb-laravel-driver,
+  twitter-php-ads-sdk, fxmlrpc, geocodio-library-php, laroute, ulid, version, yaml) or an
+  internal tool (marketing-scripts, url-shortener) — none is a SegMetrics API client. The one
+  API-adjacent repo, segmetrics-dev-docs, is the Slate source behind developers.segmetrics.io,
+  not an SDK. Consequently NO `SDKs` pointer is emitted in apis.yml: the sdk_count checks must
+  not fire on third-party packages.
+registries_probed:
+- {registry: npm, query: segmetrics, result: 'no first-party package; 2 third-party hits (recorded below)'}
+- {registry: pypi, query: segmetrics, status: 404}
+- {registry: pypi, query: segmetrics-api, status: 404}
+- {registry: rubygems, query: segmetrics, status: 404}
+- {registry: packagist, query: segmetrics, result: 'no match'}
+- {registry: crates.io, query: segmetrics, result: 'no match (0 crates)'}
+- {registry: 'github.com/SegMetrics', result: '16 public repos, no first-party SDK'}
+packages:
+- language: javascript
+  registry: npm
+  name: '@pipedream/segmetrics'
+  url: https://www.npmjs.com/package/@pipedream/segmetrics
+  install: npm install @pipedream/segmetrics
+  official: false
+  publisher: Pipedream (third-party iPaaS)
+  version: 0.0.3
+  published: '2023-09-01'
+  note: >-
+    Pipedream's connector component for SegMetrics, not a SegMetrics-authored SDK. Last
+    published 2023-09-01 — nearly three years stale, and it predates both the /v2 ad-hoc query
+    endpoint and the MCP server.
+- language: javascript
+  registry: npm
+  name: '@keystrokehq/segmetrics'
+  url: https://www.npmjs.com/package/@keystrokehq/segmetrics
+  install: npm install @keystrokehq/segmetrics
+  official: false
+  publisher: Keystroke HQ (third-party)
+  version: 0.1.6
+  published: '2026-07-18'
+  note: Third-party integration package; no SegMetrics affiliation is claimed on the listing.
+distribution_without_a_registry:
+- name: SegMetrics tracking snippet
+  registry: cdn
+  official: true
+  version: null
+  published: null
+  note: >-
+    The first-party client-side distribution is a JavaScript tracking snippet copied from
+    https://app.segmetrics.io/a/settings/snippet, not a registry package. It is account-scoped
+    and unpinned — there is no version in the loader URL — so a consumer cannot tell which
+    build they are running. Recorded as version: null deliberately: checked, nothing to record.
+    Scale-tier customers may self-host it on their own domain ("Server-Side Tracking").
+  docs: https://developers.segmetrics.io/#installing-your-javascript-snippet
+x-evidence:
+  fetched: '2026-08-12'
+  sources:
+  - {url: 'https://registry.npmjs.org/-/v1/search?text=segmetrics', status: 200}
+  - {url: 'https://pypi.org/pypi/segmetrics/json', status: 404}
+  - {url: 'https://rubygems.org/api/v1/gems/segmetrics.json', status: 404}
+  - {url: 'https://crates.io/api/v1/crates?q=segmetrics', status: 200, note: '0 results'}
+  - {url: 'https://api.github.com/users/SegMetrics/repos', status: 200, note: '16 repos, no SDK'}

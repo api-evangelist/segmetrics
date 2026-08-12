@@ -1,0 +1,70 @@
+generated: '2026-08-12'
+method: probed
+source: live probe of every SegMetrics host named in apis.yml
+note: >-
+  Every /.well-known/ path probed returned 404 on every SegMetrics host. No WellKnown or
+  SecurityTxt pointer is emitted in apis.yml — this file records a verified ABSENCE, not a
+  presence. mcp.segmetrics.io answered 403 for every path because the subdomain itself is
+  misconfigured at the CDN (Cloudflare Error 1000 "DNS points to prohibited IP"), so those
+  rows record a host-level failure rather than a document-level miss.
+hosts:
+- host: https://segmetrics.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://app.segmetrics.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://api.segmetrics.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://import.segmetrics.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+- host: https://developers.segmetrics.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://docs.segmetrics.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+- host: https://mcp.segmetrics.io
+  note: >-
+    Host resolves but is broken at the edge — Cloudflare Error 1000 (dns_loop). Every path
+    returns 403 with a Cloudflare error document, not a SegMetrics response.
+  documents:
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/oauth-protected-resource, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+  - {path: /.well-known/security.txt, status: 403}
+x-evidence:
+  fetched: '2026-08-12'
+  note: >-
+    The documented MCP server is an OAuth-protected resource at
+    https://app.segmetrics.io/mcp/ACCOUNT_ID, yet neither RFC 9728
+    (/.well-known/oauth-protected-resource) nor RFC 8414
+    (/.well-known/oauth-authorization-server) metadata is served from app.segmetrics.io.
+    An MCP client must be told the URL out of band rather than discovering it.
