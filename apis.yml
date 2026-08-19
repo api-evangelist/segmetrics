@@ -18,7 +18,7 @@ image: https://segmetrics.io/wp-content/uploads/2016/02/cropped-icon-lg-300x300.
 url: https://raw.githubusercontent.com/api-evangelist/segmetrics/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:marketing-integration-graph
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-12'
 modified: '2026-08-12'
 tags:
