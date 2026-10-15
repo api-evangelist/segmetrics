@@ -80,10 +80,28 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: data_and_analytics
+- partner_name: WordPress (own)
+  partner: wordpress
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://wordpress.org/plugins/segmetrics/
+  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
+  apps:
+  - SegMetrics Marketing Analytics
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: WordPress plugin
 method: searched
 checked:
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
 - mews-com/integrations/mews-com-integration-edges.yml
 - shopify/integrations/shopify-integration-edges.yml
 - stripe/integrations/stripe-integration-edges.yml
+- wordpress/integrations/wordpress-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
