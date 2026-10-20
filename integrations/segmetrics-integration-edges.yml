@@ -1,4 +1,56 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
+method: searched
+source:
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
+- https://zapier.com/apps/segmetrics/integrations
+- https://composio.dev/toolkits/segmetrics
+checked:
+- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
+- https://zapier.com/api/v4/apps/
+- mews-com/integrations/mews-com-integration-edges.yml
+- shopify/integrations/shopify-integration-edges.yml
+- stripe/integrations/stripe-integration-edges.yml
+- wordpress/integrations/wordpress-integration-edges.yml
+- https://composio.dev/toolkits/segmetrics
+- https://monid.ai/tools/segmetrics
+- https://n8n.io/integrations/segmetrics/
+- https://zapier.com/apps/segmetrics/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: segmetrics
+  url: https://zapier.com/apps/segmetrics/integrations
+  external_url: https://segmetrics.io/
+  partner_tier: BRONZE
+  triggers: []
+  actions:
+  - key: add_invoice
+    label: Add or Update an Order
+  - key: add_page_view
+    label: Track Page View
+  - key: add_subscription
+    label: Add or Update Subscription
+  - key: add_update_contact
+    label: Add or Update a Contact
+  - key: ad_adperformance
+    label: Record Ad Performance
+  - key: attach_tag
+    label: Add Tag to Contact
+  - key: detach_tag
+    label: Remove Tag From Contact
+  searches: []
+- marketplace: composio
+  channel: agent-gateway
+  app: segmetrics
+  url: https://composio.dev/toolkits/segmetrics
+  identity: action-prefix
+  actions:
+  - key: SEGMETRICS_CREATE_PRODUCT
+  - key: SEGMETRICS_DELETE_CONTACT
+  - key: SEGMETRICS_V1_ADD_OR_UPDATE_CONTACT
 edges:
 - partner_name: Mews (own)
   partner: mews-com
@@ -148,14 +200,426 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
-method: searched
-checked:
-- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
-- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
-- https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
-- https://zapier.com/api/v4/apps/
-- mews-com/integrations/mews-com-integration-edges.yml
-- shopify/integrations/shopify-integration-edges.yml
-- stripe/integrations/stripe-integration-edges.yml
-- wordpress/integrations/wordpress-integration-edges.yml
-source: https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
+- partner_name: Kajabi
+  partner: kajabi
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/kajabi
+  direction: third-party
+  category: eCommerce
+  partner_url: http://kajabi.com/
+- partner_name: Facebook Lead Ads
+  partner: facebook-lead-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/facebook-lead-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.facebook.com/business/ads/lead-ads
+- partner_name: involve.me
+  partner: involve-me
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/involveme
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.involve.me/integrations/zapier?utm_medium=referral&utm_source=zapier.com&utm_campaign=integrations_directory-listing
+- partner_name: ablefy
+  partner: ablefy
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/ablefy
+  direction: third-party
+  category: eCommerce
+  partner_url: https://ablefy.io/?utm_source=zapier&utm_medium=coop&utm_campaign=about_page
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Chargebee
+  partner: chargebee
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/chargebee
+  direction: third-party
+  category: Payment Processing
+  partner_url: http://www.chargebee.com/
+- partner_name: ThriveCart
+  partner: thrivecart
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/thrivecart
+  direction: third-party
+  category: eCommerce
+  partner_url: https://thrivecart.com/
+- partner_name: Google Ads
+  partner: google-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/google-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://ads.google.com/
+- partner_name: Kartra
+  partner: kartra
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/kartra
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://home.kartra.com/
+- partner_name: Simplero
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/simplero
+  direction: third-party
+  category: Online Courses
+  partner_url: http://simplero.com/
+- partner_name: LinkedIn Ads
+  partner: linkedin-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/linkedin-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.linkedin.com/
+- partner_name: Shift4Shop
+  partner: shift4shop
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/shift4shop
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shift4shop.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: ClickFunnels Classic
+  partner: clickfunnels
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/clickfunnels-classic
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.clickfunnels.com/
+- partner_name: ABC Trainerize
+  partner: trainerize
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/abc-trainerize
+  direction: third-party
+  category: Fitness
+  partner_url: http://www.trainerize.com/
+- partner_name: eBay
+  partner: ebay
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/ebay
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.ebay.com/
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Facebook Lead Ads (for Business admins)
+  partner: facebook-lead-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/facebook-lead-ads-beta
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://facebook.com/
+- partner_name: OrbisX
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/orbisx
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://orbisx.ca/
+- partner_name: Landingi
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/landingi
+  direction: third-party
+  category: Website Builders
+  partner_url: https://landingi.com/
+- partner_name: Siteglide
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/siteglide
+  direction: third-party
+  category: Website Builders
+  partner_url: https://www.siteglide.com/
+- partner_name: Teachable
+  partner: teachable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/teachable
+  direction: third-party
+  category: Online Courses
+  partner_url: https://teachable.com/
+- partner_name: ClickBank
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/clickbank
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.clickbank.com/
+- partner_name: Manychat
+  partner: manychat
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/manychat
+  direction: third-party
+  category: Social Media Marketing
+  partner_url: https://manychat.com/
+- partner_name: CallRail
+  partner: callrail
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/callrail
+  direction: third-party
+  category: Call Tracking
+  partner_url: https://www.callrail.com/?utm_medium=strategicpartner&utm_source=zapier&utm_campaign=app_listing&utm_content=app_listing
+- partner_name: Wayfront
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/wayfront
+  direction: third-party
+  category: Project Management
+  partner_url: https://wayfront.com/trial
+- partner_name: Autopilot Journeys
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/autopilot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://autopilothq.com/
+- partner_name: E-junkie
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/e-junkie
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.e-junkie.com/
+- partner_name: Brevo
+  partner: brevo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/brevo
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
+- partner_name: YouTube
+  partner: youtube
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segmetrics/integrations/youtube
+  direction: third-party
+  category: Google
+  partner_url: https://www.youtube.com/
+templates:
+- title: Add SegMetrics contacts from new Kajabi purchases
+  url: https://zapier.com/apps/kajabi/integrations/segmetrics/760482/add-segmetrics-contacts-from-new-kajabi-purchases
+  apps:
+  - kajabi
+  - segmetrics
+- title: Add new Shift4Shop orders to SegMetrics
+  url: https://zapier.com/apps/segmetrics/integrations/shift4shop/787450/add-new-shift4shop-orders-to-segmetrics
+  apps:
+  - shift4shop
+  - segmetrics
+- title: Record ad performances in SegMetrics from new or updated Google Sheets rows
+  url: https://zapier.com/apps/google-sheets/integrations/segmetrics/90450/record-ad-performances-in-segmetrics-from-new-or-updated-google-sheets-rows
+  apps:
+  - google-sheets
+  - segmetrics
+- title: Update SegMetrics orders and contacts with new Kartra sales
+  url: https://zapier.com/apps/kartra/integrations/segmetrics/560060/update-segmetrics-orders-and-contacts-with-new-kartra-sales
+  apps:
+  - kartra
+  - segmetrics
+- title: Add or update SegMetrics orders with new ClickBank sales
+  url: https://zapier.com/apps/clickbank/integrations/segmetrics/561545/add-or-update-segmetrics-orders-with-new-clickbank-sales
+  apps:
+  - clickbank
+  - segmetrics
+- title: Add new Shift4Shop orders to SegMetrics
+  url: https://zapier.com/apps/segmetrics/integrations/shift4shop/561549/add-new-shift4shop-orders-to-segmetrics
+  apps:
+  - shift4shop
+  - segmetrics
+- title: Add/update new PayKickstart orders to SegMetrics
+  url: https://zapier.com/apps/paykickstart/integrations/segmetrics/561551/addupdate-new-paykickstart-orders-to-segmetrics
+  apps:
+  - paykickstart
+  - segmetrics
+- title: Add contacts and orders in SegMetrics from new ClickBank sales
+  url: https://zapier.com/apps/clickbank/integrations/segmetrics/726637/add-contacts-and-orders-in-segmetrics-from-new-clickbank-sales
+  apps:
+  - clickbank
+  - segmetrics
+- title: Add new Teachable transactions as SegMetrics orders
+  url: https://zapier.com/apps/segmetrics/integrations/teachable/761693/add-new-teachable-transactions-as-segmetrics-orders
+  apps:
+  - teachable
+  - formatter
+  - segmetrics
+- title: Create SegMetrics orders from new E-junkie sales
+  url: https://zapier.com/apps/e-junkie/integrations/segmetrics/786162/create-segmetrics-orders-from-new-e-junkie-sales
+  apps:
+  - e-junkie
+  - segmetrics
+- title: Add or update SegMetrics orders from new orders in eBay
+  url: https://zapier.com/apps/ebay/integrations/segmetrics/787160/add-or-update-segmetrics-orders-from-new-orders-in-ebay
+  apps:
+  - ebay
+  - segmetrics
+- title: Add or update SegMetrics orders from new Ecwid orders
+  url: https://zapier.com/apps/ecwid/integrations/segmetrics/787169/add-or-update-segmetrics-orders-from-new-ecwid-orders
+  apps:
+  - ecwid
+  - segmetrics
+template_total: 65
