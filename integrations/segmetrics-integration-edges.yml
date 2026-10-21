@@ -17,6 +17,7 @@ checked:
 - https://monid.ai/tools/segmetrics
 - https://n8n.io/integrations/segmetrics/
 - https://zapier.com/apps/segmetrics/integrations
+- hubspot/integrations/hubspot-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -52,74 +53,6 @@ marketplace_apps:
   - key: SEGMETRICS_DELETE_CONTACT
   - key: SEGMETRICS_V1_ADD_OR_UPDATE_CONTACT
 edges:
-- partner_name: Mews (own)
-  partner: mews-com
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.mews.com/en/products/marketplace/segmetrics
-  mirror_of: mews-com/integrations/mews-com-integration-edges.yml
-  apps:
-  - SegMetrics
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-- partner_name: Shopify (own)
-  partner: shopify
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://apps.shopify.com/segmetrics
-  mirror_of: shopify/integrations/shopify-integration-edges.yml
-  apps:
-  - SegMetrics
-  listing_count: 1
-  detected: '2026-10-15'
-  detected_by: mirror-platform-listings.py
-  publisher_verified:
-  - Built for Shopify
-- partner_name: Stripe (own)
-  partner: stripe
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.stripe.com/apps/segmetrics
-  mirror_of: stripe/integrations/stripe-integration-edges.yml
-  apps:
-  - SegMetrics
-  listing_count: 1
-  detected: '2026-10-15'
-  detected_by: mirror-platform-listings.py
-  category: data_and_analytics
-- partner_name: WordPress (own)
-  partner: wordpress
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://wordpress.org/plugins/segmetrics/
-  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
-  apps:
-  - SegMetrics Marketing Analytics
-  listing_count: 1
-  detected: '2026-10-15'
-  detected_by: mirror-platform-listings.py
-  category: WordPress plugin
 - partner_name: Twilio Segment
   partner: segment
   partner_match: aggregator
@@ -560,6 +493,91 @@ edges:
   direction: third-party
   category: Google
   partner_url: https://www.youtube.com/
+- partner_name: Mews (own)
+  partner: mews-com
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.mews.com/en/products/marketplace/segmetrics
+  mirror_of: mews-com/integrations/mews-com-integration-edges.yml
+  apps:
+  - SegMetrics
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/segmetrics
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - SegMetrics
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  publisher_verified:
+  - Built for Shopify
+- partner_name: Stripe (own)
+  partner: stripe
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.stripe.com/apps/segmetrics
+  mirror_of: stripe/integrations/stripe-integration-edges.yml
+  apps:
+  - SegMetrics
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: data_and_analytics
+- partner_name: WordPress (own)
+  partner: wordpress
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://wordpress.org/plugins/segmetrics/
+  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
+  apps:
+  - SegMetrics Marketing Analytics
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: WordPress plugin
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/segmetrics-201847
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - SegMetrics
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: MARKETING_ANALYTICS
 templates:
 - title: Add SegMetrics contacts from new Kajabi purchases
   url: https://zapier.com/apps/kajabi/integrations/segmetrics/760482/add-segmetrics-contacts-from-new-kajabi-purchases
