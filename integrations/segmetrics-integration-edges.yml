@@ -18,6 +18,7 @@ checked:
 - https://n8n.io/integrations/segmetrics/
 - https://zapier.com/apps/segmetrics/integrations
 - hubspot/integrations/hubspot-integration-edges.yml
+- intercom/integrations/intercom-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -578,6 +579,23 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: MARKETING_ANALYTICS
+- partner_name: Intercom (own)
+  partner: intercom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.intercom.com/app-store/?app_package_code=segmetrics
+  mirror_of: intercom/integrations/intercom-integration-edges.yml
+  apps:
+  - SegMetrics
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Analytics
 templates:
 - title: Add SegMetrics contacts from new Kajabi purchases
   url: https://zapier.com/apps/kajabi/integrations/segmetrics/760482/add-segmetrics-contacts-from-new-kajabi-purchases
