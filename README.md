@@ -64,5 +64,120 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Take the Guesswork Out of Growth is a company surfaced via the API Evangelist harvest backlog (source: marketing-integration-graph) and added to the network as a stub for full-pipeline profiling.
-- https://segmetrics.com/
+SegMetrics is a marketing attribution and revenue analytics platform for digital marketers, info-product businesses and agencies. It stitches ad clicks, opt-ins, email engagement, calls and purchases into a single contact journey so a business can see which traffic sources, campaigns and funnels actually produce revenue and lifetime value rather than just clicks. The platform connects to 100+ marketing tools (ActiveCampaign, Kit/ConvertKit, ClickFunnels, HighLevel, Drip, Ontraport, WooCommerce, Google Ads, Microsoft Advertising and more) and adds fingerprint tracking, full-LTV attribution, multi-report tables, custom dashboards and data monitors on top. Developers get three public surfaces: a v1 Import API at import.segmetrics.io for pushing contacts, tags, orders, subscriptions, products and ad performance into an integration; a Reporting API at api.segmetrics.io for saved reports, customer-journey exports and ad-hoc /v2 data queries; and a read-only hosted MCP server at app.segmetrics.io/mcp that exposes 11 OAuth-protected tools to Claude, ChatGPT and other MCP clients. API access is gated to the Scale tier and above.
+
+**Areas:** Company · Marketing · Analytics · Attribution · Marketing Analytics · Reporting · Business Intelligence · Advertising · Software-as-a-Service · MCP
+
+## SegMetrics on APIs.io
+
+Everything profiled for SegMetrics is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/segmetrics/](https://apis.io/providers/segmetrics/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [SegMetrics Import API](https://apis.io/apis/segmetrics/segmetrics-import-api/) — The v1 Import API lets a customer push their own data into a SegMetrics integration — contacts (with UTM attribution, geo, affiliate and custom fields),…
+- [SegMetrics Reporting API](https://apis.io/apis/segmetrics/segmetrics-reporting-api/) — The Reporting API returns the metrics SegMetrics generates — saved report data (KPIs, graph series and a table of fields and rows), a customer-journey…
+- [SegMetrics MCP Server](https://apis.io/apis/segmetrics/segmetrics-mcp-server/) — A hosted, read-only Model Context Protocol server that gives Claude, ChatGPT and other MCP clients direct access to a SegMetrics account. Eleven tools split…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [SegMetrics MCP Server](https://apis.io/servers/segmetrics/segmetrics-mcp-server/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Segmetrics Authentication](https://apis.io/security/segmetrics/segmetrics-authentication/)
+- [Segmetrics Domain Security](https://apis.io/security/segmetrics/segmetrics-domain-security/)
+- [Segmetrics Vulnerability Disclosure](https://apis.io/security/segmetrics/segmetrics-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Segmetrics Plans Pricing](https://apis.io/plans/segmetrics/segmetrics-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Segmetrics Rate Limits](https://apis.io/rate-limits/segmetrics/segmetrics-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://segmetrics.io/)
+- [Documentation](https://docs.segmetrics.io/)
+- [Getting started](https://developers.segmetrics.io/#getting-started)
+- [API reference](https://developers.segmetrics.io/)
+- [Pricing](https://segmetrics.io/pricing/)
+- [Sign up](https://app.segmetrics.io/signup/)
+- [Support](https://docs.segmetrics.io/contact/)
+- [Blog](https://segmetrics.io/articles/)
+- [Security](https://segmetrics.io/security/)
+- [Compliance](https://segmetrics.io/security/)
+- [Terms of service](https://segmetrics.io/terms-service/)
+- [Privacy policy](https://segmetrics.io/privacy-policy/)
+- [GitHub](https://github.com/SegMetrics)
+- [Status](https://status.segmetrics.io/)
+
+## API Evangelist rating
+
+**Kin Score 46.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 51.2 |
+| Access clarity | 84.2 |
+
+**Agent readiness 7.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/segmetrics/](https://apis.io/providers/segmetrics/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for SegMetrics: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/segmetrics/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
